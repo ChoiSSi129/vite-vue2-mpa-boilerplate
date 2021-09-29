@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img
+      src="@/assets/img/logo.png"
       alt="Vue logo"
-      src="@/assets/logo.png"
     />
     <HelloWorld msg="Hello Vue 2 + Vite" />
     서브서브서브서브서브
