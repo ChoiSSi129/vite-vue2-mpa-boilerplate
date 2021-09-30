@@ -5,7 +5,6 @@ import mpa from 'vite-plugin-mpa' // https://www.npmjs.com/package/vite-plugin-m
 import path from 'path'
 import pluginTest from './pluginTest.js'
 
-
 /**
  * 아래 인자 값 사용 가능
  * @param {*} command
