@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p class="test">비동기 테스트</p>
+    <p class="test">
+      비동기 테스트
+    </p>
   </div>
 </template>
 

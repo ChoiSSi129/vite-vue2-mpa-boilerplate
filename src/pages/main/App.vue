@@ -3,10 +3,12 @@
     <img
       src="@/assets/img/logo.png"
       alt="Vue logo"
-    />
+    >
+    
     <HelloWorld msg="Hello Vue 2 + Vite" />
     <TestAsync />
-    <div class="banner"></div>
+    <div class="banner" />
+    <div>asdasdd</div>
   </div>
 </template>
 

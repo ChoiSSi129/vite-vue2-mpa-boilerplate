@@ -3,7 +3,7 @@
     <img
       src="@/assets/img/logo.png"
       alt="Vue logo"
-    />
+    >
     <HelloWorld msg="Hello Vue 2 + Vite" />
     서브서브서브서브서브
   </div>

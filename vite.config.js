@@ -1,12 +1,27 @@
 import { defineConfig } from 'vite'
 import { createVuePlugin } from 'vite-plugin-vue2' // https://www.npmjs.com/package/vite-plugin-vue2
+import eslintPlugin from 'vite-plugin-eslint'; // https://www.npmjs.com/package/vite-plugin-eslint
 import mpa from 'vite-plugin-mpa' // https://www.npmjs.com/package/vite-plugin-mpa
 import path from 'path'
+import pluginTest from './pluginTest.js'
 
-export default (comand) => {
+/**
+ * 아래 인자 값 사용 가능
+ * @param {*} command
+ * @param {*} mode
+ * export default (command, mode)
+ */
+export default () => {
   return defineConfig({
     plugins: [
-      createVuePlugin(), 
+      createVuePlugin(),
+
+      /**
+       * vite에서 eslint 설정을 위한 플러그인
+       */
+      eslintPlugin({
+        fix: true,
+      }),
 
       /**
        * MPA 지원 플러그인
@@ -15,20 +30,35 @@ export default (comand) => {
         scanDir: 'src/pages',
         scanFile: 'main.js',
         filename: 'index.html'
-      })
+      }),
+
+      pluginTest()
     ],
   
     /**
      * 소스내 기본 경로 설정
      */
     resolve: {
-      alias: {
-        '@': path.resolve(__dirname, 'src'),
-        '~@': path.resolve(__dirname, 'src')
+      alias: [
+      {
+        find: '@',
+        replacement: path.resolve(__dirname, 'src')
+      },
+      {
+        find: '~@',
+        replacement: path.resolve(__dirname, 'src')
       }
+    ]
     },
   
     build: {
+      // target: 'es2015',
+      // terserOptions: {
+      //   compress: {
+      //     // drop_console: true, // production 환경에서 콘솔 제거
+      //   },
+      // },
+      
       // cssCodeSplit: false,
       sourcemap: false,
       assetsDir: 'assets/img',
@@ -55,6 +85,7 @@ export default (comand) => {
               return 'chunk-vendors';
             }
           },
+          // manualChunks: undefined,
 
           /**
            * 청크 파일 JS
@@ -73,7 +104,7 @@ export default (comand) => {
            */
           assetFileNames: (assetInfo) => {
             // console.log("assetInfo", assetInfo)
-            return 'assets/[ext]/[name].[hash].[ext]'
+            return assetInfo.name.includes(".css") ? `assets/css/[name].[hash].[ext]` : `assets/[name].[hash].[ext]`
           }
         }
       }
@@ -85,6 +116,7 @@ export default (comand) => {
     css: {
       preprocessorOptions: {
         scss: {
+          // javascriptEnabled: true
           // additionalData: '@import "@scss/shared.scss";'
         }
       }
