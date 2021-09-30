@@ -1,5 +1,5 @@
 {
-  "name": "vue2-vite",
+  "name": "vite-vue2-mpa-boilerplate",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
