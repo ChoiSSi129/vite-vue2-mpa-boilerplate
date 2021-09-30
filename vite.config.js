@@ -60,8 +60,8 @@ export default () => {
       // },
       
       // cssCodeSplit: false,
-      sourcemap: false,
-      assetsDir: 'assets/img',
+      // sourcemap: false,
+      assetsDir: 'assets',
       rollupOptions: {
         output: {
           /**
